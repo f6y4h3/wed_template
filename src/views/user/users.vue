@@ -1,11 +1,13 @@
 <template>
-  <div>首页</div>
+    <div>
+        用户列表页
+    </div>
 </template>
 <script lang="ts" setup>
-// import { defineOptions } from 'vue'
 defineOptions({
-    name:'index'
+    name:"users"
 })
 </script>
 <style lang="scss" scoped>
+
 </style>
