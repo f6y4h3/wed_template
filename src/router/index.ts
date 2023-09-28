@@ -8,7 +8,6 @@ import { nextTick } from 'vue'
 // const modules = import.meta.glob('../views/*/*.vue',{ eager: true })
 // console.log(modules,'路由地址');
 const routers = import.meta.glob('./module/*.ts', { eager: true })
-console.log(routers, '路由模块')
 const routerList = [] as any
 for (const router in routers) {
   // console.log(routers[router],'单个路由');
@@ -17,7 +16,7 @@ for (const router in routers) {
   }
 }
 nextTick(()=>{
-  console.log(routerList,'路由列表')
+  // console.log(routerList,'路由列表')
   const list = useRoutersStore()
   list.addRouter(routerList)
 })

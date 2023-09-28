@@ -1,6 +1,6 @@
 <template>
   <div class="_silder-item">
-    <el-menu class="el-menu-vertical-demo" :collapse="isCollapse" background-color="#545c64" text-color="#fff"
+    <el-menu class="el-menu-vertical-demo" :collapse="global.shrinkVal" background-color="#545c64" text-color="#fff"
       active-text-color="#ffd04b">
       <div v-for="(route, index) of routeList" :key="index">
         <el-sub-menu index="1" v-if="route.children">
@@ -26,11 +26,13 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, reactive } from 'vue';
+import { reactive } from 'vue';
 import { useRoutersStore } from '@/stores/router'
+import { useGlobalStore } from '@/stores/global'
 import { RouterLink } from 'vue-router'
 const routers = useRoutersStore()
-const isCollapse = ref(false)
+const global = useGlobalStore()
+// const isCollapse = ref(false)
 const routeList = reactive<Array<RouterTabel>>(routers.routers.list)
 console.log(import.meta.env.MODE, import.meta.env.VITE_BASE_URL, 'env');
 
@@ -41,8 +43,8 @@ console.log(import.meta.env.MODE, import.meta.env.VITE_BASE_URL, 'env');
 }
 
 ._silder-item {
-  width: 100%;
-  position: relative;
+  // width: 100%;
+  // position: relative;
 }
 
 ::v-deep .el-menu {

@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <el-container>
-      <el-aside width="200px">
+      <el-aside width=60>
         <div class="silder_ber">
           <SilderBer />
         </div>
@@ -28,7 +28,7 @@ import { NavBer, Content, SilderBer } from './components'
   display: flex;
 
   .silder_ber {
-    width: 100%;
+    // width: 100%;
     height: 100%;
     background-color: #545c64;
     overflow-y: scroll;
@@ -58,5 +58,11 @@ import { NavBer, Content, SilderBer } from './components'
     //       color-stop(0.8, rgb(111, 159, 253)));
     }
   }
+}
+:deep(.el-header){
+  padding: 0px;
+}
+:deep(.el-main){
+  padding: 0px;
 }
 </style>

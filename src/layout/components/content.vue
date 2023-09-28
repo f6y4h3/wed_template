@@ -1,21 +1,24 @@
 <template>
     <div class="container">
-        <Transition name="_content">
-            <RouterView />
-        </Transition>
+        <el-card class="box-card">
+            <Transition name="_content">
+                <RouterView />
+            </Transition>
+        </el-card>
     </div>
 </template>
 <script lang="ts" setup>
-// improt
 import { RouterView } from 'vue-router'
-
 </script>
 <style lang="scss" scoped>
 .container {
     width: 100%;
     height: 100%;
     background-color: bisque;
-
+    >.box-card{
+        width: 100%;
+        height: 100%;
+    }
     ._content-enter-active {
         transition: all 0.5s ease-out;
     }
