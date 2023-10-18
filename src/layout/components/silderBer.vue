@@ -20,7 +20,6 @@
             </template>
           </el-menu-item>
         </RouterLink>
-
       </div>
     </el-menu>
   </div>
@@ -32,7 +31,6 @@ import { useGlobalStore } from '@/stores/global'
 import { RouterLink } from 'vue-router'
 const routers = useRoutersStore()
 const global = useGlobalStore()
-// const isCollapse = ref(false)
 const routeList = reactive<Array<RouterTabel>>(routers.routers.list)
 console.log(import.meta.env.MODE, import.meta.env.VITE_BASE_URL, 'env');
 
@@ -42,15 +40,7 @@ console.log(import.meta.env.MODE, import.meta.env.VITE_BASE_URL, 'env');
   box-sizing: border-box;
 }
 
-._silder-item {
-  // width: 100%;
-  // position: relative;
-}
-
 ::v-deep .el-menu {
   border: none;
 }
-// ::v-deep .el-menu-item{
-//   background-color: rgb(43, 125, 197);
-// }
 </style>
