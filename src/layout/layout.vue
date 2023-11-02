@@ -3,7 +3,7 @@
     <el-container>
       <el-aside width=60>
         <div class="silder_ber">
-          <SilderBer />
+          <SilderBer :router-data="routeList"/>
         </div>
       </el-aside>
       <el-container>
@@ -19,6 +19,13 @@
 </template>
 <script lang="ts" setup>
 import { NavBer, Content, SilderBer } from './components'
+import { reactive } from 'vue';
+import { useRoutersStore } from '@/stores/router'
+// import { useGlobalStore } from '@/stores/global'
+const routers = useRoutersStore()
+// const global = useGlobalStore()
+const routeList = reactive<Array<RouterTabel>>(routers.routers.list)
+console.log(routeList)
 
 </script>
 <style lang="scss" scoped>
@@ -50,19 +57,21 @@ import { NavBer, Content, SilderBer } from './components'
       border-radius: 4px;
       height: 20px;
       background-color: #6b7075;
-    //   background-image: -webkit-gradient(linear,
-    //       left bottom,
-    //       left top,
-    //       color-stop(0.2, rgb(111, 159, 253)),
-    //       color-stop(0.4, rgb(23, 133, 243)),
-    //       color-stop(0.8, rgb(111, 159, 253)));
+      //   background-image: -webkit-gradient(linear,
+      //       left bottom,
+      //       left top,
+      //       color-stop(0.2, rgb(111, 159, 253)),
+      //       color-stop(0.4, rgb(23, 133, 243)),
+      //       color-stop(0.8, rgb(111, 159, 253)));
     }
   }
 }
-:deep(.el-header){
+
+:deep(.el-header) {
   padding: 0px;
 }
-:deep(.el-main){
+
+:deep(.el-main) {
   padding: 0px;
 }
 </style>
