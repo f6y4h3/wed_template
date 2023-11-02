@@ -1,6 +1,18 @@
 <template>
   <div class="_silder-item">
-    <el-menu class="el-menu-vertical-demo" :collapse="global.shrinkVal" background-color="#545c64" text-color="#fff"
+    <div v-for="(route, index) of routeList" :key="index">
+      <!-- 子集 -->
+      <div v-if="route.children?.length">
+          <silderBer :router-data="route.children"></silderBer>
+      </div>
+      <!-- 第一层 -->
+      <div v-else>
+        <RouterLink :to="route.path">
+
+        </RouterLink>
+      </div>
+    </div>
+    <!-- <el-menu class="el-menu-vertical-demo" :collapse="global.shrinkVal" background-color="#545c64" text-color="#fff"
       active-text-color="#ffd04b">
       <div v-for="(route, index) of routeList" :key="index">
         <el-sub-menu index="1" v-if="route.children">
@@ -21,18 +33,22 @@
           </el-menu-item>
         </RouterLink>
       </div>
-    </el-menu>
+    </el-menu> -->
   </div>
 </template>
 <script lang="ts" setup>
 import { reactive } from 'vue';
 import { useRoutersStore } from '@/stores/router'
-import { useGlobalStore } from '@/stores/global'
+// import { useGlobalStore } from '@/stores/global'
 import { RouterLink } from 'vue-router'
+defineProps({
+  routerData: {
+    type: Array<RouterTabel>
+  }
+})
 const routers = useRoutersStore()
-const global = useGlobalStore()
+// const global = useGlobalStore()
 const routeList = reactive<Array<RouterTabel>>(routers.routers.list)
-console.log(import.meta.env.MODE, import.meta.env.VITE_BASE_URL, 'env');
 
 </script>
 <style lang="scss" scoped>
