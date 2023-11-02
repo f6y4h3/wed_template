@@ -1,9 +1,9 @@
-import {type RouteComponent} from 'vue-router'
+import {type RouteComponent ,RouteRecordRaw} from 'vue-router'
 
 declare global{
-  interface RouterTabel{
-    path:string;
+  interface RouterTabel extends RouteRecordRaw{
     name:string;
+    path:string,
     component?:RouteComponent,
     redirect?:string,
     children?:Array<childrenTabel>,
