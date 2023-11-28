@@ -1,20 +1,18 @@
 <template>
-  <div class="layout">
-    <el-container>
-      <el-aside width=60>
-        <div class="silder_ber">
-          <SilderBer />
-        </div>
-      </el-aside>
-      <el-container>
-        <el-header>
-          <NavBer />
-        </el-header>
-        <el-main>
-          <Content />
-        </el-main>
-      </el-container>
-    </el-container>
+  <div class="_layout">
+    <div class="_layout-left">
+      <el-scrollbar>
+        <SilderBer />
+      </el-scrollbar>
+    </div>
+    <div class="_layout-right">
+      <div class="_layout-right--top">
+        <NavBer />
+      </div>
+      <div class="_layout-right--bottom">
+        <Content />
+      </div>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -22,47 +20,36 @@ import { NavBer, Content, SilderBer } from './components'
 
 </script>
 <style lang="scss" scoped>
-.layout {
-  width: 100%;
-  height: 100%;
+._layout {
+  width: 100vw;
+  height: 100vh;
   display: flex;
-
-  .silder_ber {
-    // width: 100%;
+  &-left{
     height: 100%;
     background-color: #545c64;
-    overflow-y: scroll;
-
-    /*滚动条里面轨道*/
-    &::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0);
-      background-color: #545c64;
-    }
-
-    /*定义滚动条整体的样式*/
-    &::-webkit-scrollbar {
-      width: 6px;
-      background-color: rgb(20, 19, 19);
-    }
-
-    /*滚动条的样式*/
-    &::-webkit-scrollbar-thumb {
-      border-radius: 4px;
-      height: 20px;
-      background-color: #6b7075;
-    //   background-image: -webkit-gradient(linear,
-    //       left bottom,
-    //       left top,
-    //       color-stop(0.2, rgb(111, 159, 253)),
-    //       color-stop(0.4, rgb(23, 133, 243)),
-    //       color-stop(0.8, rgb(111, 159, 253)));
+    color: white;
+  }
+  &-right{
+    display: flex;
+    flex-direction: column;
+    background-color: #6b7075;
+    flex: 1;
+    &--bottom{
+      // height: ;
+      flex: 1;
     }
   }
 }
-:deep(.el-header){
-  padding: 0px;
+:deep(.el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-menu-item){
+  padding-left: calc(var(--el-menu-base-level-padding) + var(--el-menu-level) * var(--el-menu-level-padding));
 }
-:deep(.el-main){
-  padding: 0px;
+:deep(.el-menu-item-group){
+  background-color: #3e4144;
 }
+// :deep(.el-header){
+//   padding: 0px;
+// }
+// :deep(.el-main){
+//   padding: 0px;
+// }
 </style>

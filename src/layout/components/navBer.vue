@@ -4,10 +4,12 @@
             <!-- <el-icon></el-icon> -->
             <div class="nav">
                 <div class="icon" @click="handleChange">
-                    <el-icon size="20" v-show="global.shrinkVal">
+                    <el-icon size="20" v-show="!global.shrinkVal">
                         <Fold />
                     </el-icon>
-                    <el-icon size="20" v-show="!global.shrinkVal"><Expand /></el-icon>
+                    <el-icon size="20" v-show="global.shrinkVal">
+                        <Expand />
+                    </el-icon>
                 </div>
                 <el-breadcrumb separator-class="el-icon-arrow-right">
                     <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -24,12 +26,11 @@ import { useRoute } from 'vue-router'
 import { useGlobalStore } from '@/stores/global'
 const global = useGlobalStore()
 const route = useRoute();
-const handleChange = ()=>{
+const handleChange = () => {
     global.changeShrink()
 }
 const list = computed(() => {
-    let result = []
-    result = route.matched.filter(item => {
+    let result: any[] = route.matched.filter(item => {
         return item.path != '/index'
     })
     return result
@@ -43,16 +44,17 @@ const list = computed(() => {
     .nav {
         display: flex;
         align-items: center;
-        .icon{
+
+        .icon {
             display: flex;
             align-items: center;
             margin-right: 20px;
-            &:hover{
+
+            &:hover {
                 cursor: pointer;
             }
         }
     }
 
     // background-color: antiquewhite;
-}
-</style>
+}</style>

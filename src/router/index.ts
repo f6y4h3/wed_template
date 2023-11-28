@@ -7,10 +7,12 @@ import { nextTick } from 'vue'
 const routers: Record<string, any> = import.meta.glob('./module/*.ts', { eager: true })
 
 const routerList = [] as any[]
+let data;
 for (const router in routers) {
-  console.log(routers[router], '单个路由')
   if (routers[router]?.default) {
-    routerList.push(routers[router]?.default)
+    // routerList.push(routers[router]?.default)
+    data = routers[router]?.default
+    routerList.push(data)
   }
 }
 nextTick(() => {

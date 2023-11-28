@@ -8,11 +8,13 @@ declare global{
     redirect?:string,
     children?:Array<childrenTabel>,
     meta?:string
+    icon?:string
   }
   interface childrenTabel{
     path:string;
     name:string;
     component?:RouteComponent,
-    meta?:string
+    meta?:string,
+    icon?:string
   }
 }

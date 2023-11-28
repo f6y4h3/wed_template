@@ -1,7 +1,8 @@
 export default {
   path: '/user',
-  name: '用户',
+  name: '用户管理',
   redirect: '/user/index',
+  icon:'Edit',
   children: [
     {
       path: '/user/index',
