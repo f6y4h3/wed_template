@@ -17,6 +17,13 @@
 </template>
 <script lang="ts" setup>
 import { NavBer, Content, SilderBer } from './components'
+import { reactive } from 'vue';
+import { useRoutersStore } from '@/stores/router'
+// import { useGlobalStore } from '@/stores/global'
+const routers = useRoutersStore()
+// const global = useGlobalStore()
+const routeList = reactive<Array<RouterTabel>>(routers.routers.list)
+console.log(routeList)
 
 </script>
 <style lang="scss" scoped>
