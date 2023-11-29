@@ -40,10 +40,12 @@ console.log(routeList)
     display: flex;
     flex-direction: column;
     background-color: #6b7075;
+    height: 100vh;
     flex: 1;
     &--bottom{
       // height: ;
       flex: 1;
+      overflow: hidden;
     }
   }
 }

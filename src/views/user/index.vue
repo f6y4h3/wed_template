@@ -1,6 +1,6 @@
 <template>
     <div>
-        用户页,,,,
+        <img src="../../assets/logo.svg" alt="">
     </div>
 </template>
 <script lang="ts" setup>

@@ -1,4 +1,3 @@
-// import home from '@/views/index'
 // 静态路由定义
 export default {
   path: '/index',

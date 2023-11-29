@@ -1,7 +1,6 @@
 <template>
     <div class="container">
         <el-card class="box-card">
-            <!-- <el-icon></el-icon> -->
             <div class="nav">
                 <div class="icon" @click="handleChange">
                     <el-icon size="20" v-show="!global.shrinkVal">
@@ -13,8 +12,9 @@
                 </div>
                 <el-breadcrumb separator-class="el-icon-arrow-right">
                     <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                    <el-breadcrumb-item v-for="(item, index) of list" :key="index" :to="item.path">{{ item.name
-                    }}</el-breadcrumb-item>
+                    <el-breadcrumb-item v-for="(item, index) of list" :key="index" :to="item.path">
+                        {{ item.name }}
+                    </el-breadcrumb-item>
                 </el-breadcrumb>
             </div>
         </el-card>
@@ -55,6 +55,5 @@ const list = computed(() => {
             }
         }
     }
-
-    // background-color: antiquewhite;
-}</style>
+}
+</style>

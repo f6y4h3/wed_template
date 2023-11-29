@@ -12,7 +12,12 @@ for (const router in routers) {
   if (routers[router]?.default) {
     // routerList.push(routers[router]?.default)
     data = routers[router]?.default
-    routerList.push(data)
+    if(!data.icon){
+      data.meta = data.name.slice(0,2)
+    }
+    if(!data.hidden){
+      routerList.push(data)
+    }
   }
 }
 nextTick(() => {
@@ -25,7 +30,7 @@ const router = createRouter({
     ...routerList,
     {
       path: '/',
-      redirect: '/index'
+      redirect: '/index',
     }
   ]
 })

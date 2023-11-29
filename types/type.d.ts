@@ -9,6 +9,7 @@ declare global{
     children?:Array<childrenTabel>,
     meta?:string
     icon?:string
+    hidden?:boolean
   }
   interface childrenTabel{
     path:string;
@@ -16,5 +17,6 @@ declare global{
     component?:RouteComponent,
     meta?:string,
     icon?:string
+    hidden?:boolean
   }
 }
