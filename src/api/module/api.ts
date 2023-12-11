@@ -1,3 +1,4 @@
-export default{
-  getList:{method:'',url:'/api/index/list'}
-}
+export default {
+  getList: { method: 'get', url: '/api/index/list' },
+  getCats: { method: 'get', url: '/api/cats' },
+} as request

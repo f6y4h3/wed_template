@@ -7,17 +7,15 @@ import { nextTick } from 'vue'
 const routers: Record<string, any> = import.meta.glob('./module/*.ts', { eager: true })
 
 const routerList = [] as any[]
-let data;
+let data
 for (const router in routers) {
   if (routers[router]?.default) {
     // routerList.push(routers[router]?.default)
     data = routers[router]?.default
-    if(!data.icon){
-      data.meta = data.name.slice(0,2)
+    if (!data.icon) {
+      data.meta = data.name.slice(0, 2)
     }
-    if(!data.hidden){
-      routerList.push(data)
-    }
+    routerList.push(data)
   }
 }
 nextTick(() => {
@@ -30,7 +28,7 @@ const router = createRouter({
     ...routerList,
     {
       path: '/',
-      redirect: '/index',
+      redirect: '/index'
     }
   ]
 })

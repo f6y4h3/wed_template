@@ -3,7 +3,7 @@
     <el-menu class="el-menu-vertical-demo" :collapse="global.shrinkVal" router background-color="#545c64"
       text-color="#fff">
       <template v-for="(item, index) of routeList" :key="index">
-        <el-sub-menu index="1" v-if="item.children">
+        <el-sub-menu index="1" v-if="item.children && !item.hidden">
           <template #title>
             <el-icon v-if="item.icon">
               <component :is="item.icon"></component>
@@ -15,7 +15,7 @@
             <el-menu-item :index="children.path">{{ children.name }}</el-menu-item>
           </el-menu-item-group>
         </el-sub-menu>
-        <el-menu-item :index="item.path" v-else>
+        <el-menu-item :index="item.path" v-else-if="!item.children && !item.hidden">
           <el-icon v-if="item.icon">
             <component :is="item.icon"></component>
           </el-icon>
