@@ -18,7 +18,7 @@ const toLogin = () => {
   router.push({ path: 'login' })
 }
 const getCats = () => {
-  api.getCats().then((res: any) => {
+  api.getCats({msg:'xiaomao'}).then((res: any) => {
     console.log(res);
 
   })

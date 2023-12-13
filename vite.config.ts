@@ -32,7 +32,7 @@ export default defineConfig(({ mode }) => {
       port: Number(env.VITE_PORT), //启动端口
       proxy: {
         /** api 的请求接口代理 */
-        '^/api': {
+        '/api': {
           target: env.VITE_BASE_URL,
           changeOrigin: true,
           rewrite(path){

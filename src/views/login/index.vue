@@ -18,6 +18,9 @@
           <el-form-item>
             <el-button @click="toRegister">注册</el-button>
           </el-form-item>
+          <el-form-item>
+            <el-button @click="getUser">User</el-button>
+          </el-form-item>
         </el-form>
       </div>
     </div>
@@ -33,19 +36,28 @@ import api from '@/api';
 // })
 
 const registerQuery = reactive({
-  account:'xiaoluo',
-  password:'123456',
-  sex:1,
-  name:'xiaoluo'
+  account: 'xiaoluo',
+  password: '123456',
+  sex: 1,
+  name: 'xiaoluo'
 })
 
-const loginRequst =()=>{
-
+const loginRequst = () => {
+  api.userLogin(registerQuery).then((res: any) => {
+    // console.log(res,'登录结果');
+    localStorage.setItem('token', res.access_token)
+  })
 }
 
 const toRegister = () => {
-  api.userRegister(registerQuery).then((res:any)=>{
-    console.log(res,'注册结果');
+  api.userRegister(registerQuery).then((res: any) => {
+    console.log(res, '注册结果');
+  })
+
+}
+const getUser = () => {
+  api.getUser().then((res: any) => {
+    console.log(res, '用户信息');
   })
 }
 </script>
@@ -71,25 +83,29 @@ const toRegister = () => {
     filter: blur(5px);
     z-index: -1;
   }
+
   box-shadow:inset 0px 0px 5px 1px #000;
   overflow: hidden;
+
   &-content {
     display: flex;
     width: 100%;
     height: 100%;
-    &--left{
+
+    &--left {
       flex: 2;
       display: flex;
       align-items: center;
     }
-    &--right{
+
+    &--right {
       flex: 1;
       display: flex;
       align-items: center;
     }
   }
 }
-:deep(.el-form-item__label){
+
+:deep(.el-form-item__label) {
   color: #e9e0e0;
-}
-</style>
+}</style>

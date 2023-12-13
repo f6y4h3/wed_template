@@ -1,5 +1,5 @@
 export default {
-  getUser: { method: 'post', url: '/api/index/list' },
-  getUserinfo: { method: 'post', url: '/api/index/list' },
+  getUser: { method: 'get', url: '/api/auth/profile' },
+  userLogin: { method: 'post', url: '/api/auth/login' },
   userRegister: { method: 'post', url: '/api/user/register' }, // 注册
 } as request
