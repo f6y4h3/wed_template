@@ -4,6 +4,7 @@ import pinia from './stores/store'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import './api/index'
+import './permission' 
 
 import App from './App.vue'
 import router from './router'
