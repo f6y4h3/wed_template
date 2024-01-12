@@ -1,6 +1,7 @@
 <template>
     <div>
-        <img src="../../assets/logo.svg" alt="">
+        <!-- <img src="../../assets/logo.svg" alt=""> -->
+        
     </div>
 </template>
 <script lang="ts" setup>

@@ -44,8 +44,8 @@ const registerQuery = reactive({
 
 const loginRequst = () => {
   api.userLogin(registerQuery).then((res: any) => {
-    // console.log(res,'登录结果');
-    localStorage.setItem('token', res.access_token)
+    console.log(res,'登录结果');
+    localStorage.setItem('token', res.data.access_token)
   })
 }
 

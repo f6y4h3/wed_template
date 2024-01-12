@@ -7,7 +7,7 @@ declare global {
     component?: RouteComponent
     redirect?: string
     children?: Array<childrenTabel>
-    meta?: string
+    meta?: object
     icon?: string
     hidden?: boolean
   }
@@ -15,7 +15,7 @@ declare global {
     path: string
     name: string
     component?: RouteComponent
-    meta?: string
+    meta?: object
     icon?: string
     hidden?: boolean
   }

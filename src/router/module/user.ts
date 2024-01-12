@@ -3,6 +3,7 @@ export default {
   name: '用户管理',
   redirect: '/user/index',
   icon:'Edit',
+  meta:{},
   children: [
     {
       path: '/user/index',

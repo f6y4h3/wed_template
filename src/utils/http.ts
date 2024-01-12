@@ -27,16 +27,16 @@ instance.interceptors.response.use((response) => {
   if (status == 200) {
     switch (data.code) {
       case 200:
-        return data
-        break
+        return Promise.resolve(data)
       default:
         ElMessage({
           message: data.msg,
           type: responseMsg[data.code]
         })
-        return data
-        break
+        return Promise.reject(data)
     }
+  }else{
+    return Promise.reject(data)
   }
 })
 export default instance
