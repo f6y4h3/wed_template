@@ -25,8 +25,8 @@
                         </div>
                         <template #dropdown>
                             <el-dropdown-menu>
-                                <el-dropdown-item command="1">我的信息</el-dropdown-item>
-                                <el-dropdown-item command="2">退出</el-dropdown-item>
+                                <el-dropdown-item :command="1">我的信息</el-dropdown-item>
+                                <el-dropdown-item :command="2">退出</el-dropdown-item>
                             </el-dropdown-menu>
                         </template>
                     </el-dropdown>
@@ -39,6 +39,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useGlobalStore } from '@/stores/global'
+import { cleraToken } from '@/utils/auth'
 const global = useGlobalStore()
 const route = useRoute();
 const handleChange = () => {
@@ -46,13 +47,20 @@ const handleChange = () => {
 }
 const list = computed(() => {
     let result: any[] = route.matched.filter(item => {
-        return item.path != '/index'
+        return item.path != '/index' && item.path != '/'
     })
     return result
 })
-const handleCommand = (e: string | number | object) => {
-    console.log(e,'e');
 
+const handleCommand = (e: string | number | object) => {
+    console.log(e, 'e');
+    switch ((e)) {
+        case 2:
+            cleraToken()
+            break;
+        default:
+            break;
+    }
 }
 </script>
 <style lang="scss" scoped>

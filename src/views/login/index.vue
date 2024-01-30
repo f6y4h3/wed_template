@@ -28,7 +28,8 @@
 </template>
 <script lang="ts" setup>
 import { reactive } from "vue";
-// import router from "@/router";
+import { setToken } from '@/utils/auth'
+import router from "@/router";
 import api from '@/api';
 // const loginQuery = reactive({
 //   account:"",
@@ -44,8 +45,8 @@ const registerQuery = reactive({
 
 const loginRequst = () => {
   api.userLogin(registerQuery).then((res: any) => {
-    console.log(res,'登录结果');
-    localStorage.setItem('token', res.data.access_token)
+    setToken(res.data.access_token)
+    router.replace({ path: '/' })
   })
 }
 
@@ -108,4 +109,5 @@ const getUser = () => {
 
 :deep(.el-form-item__label) {
   color: #e9e0e0;
-}</style>
+}
+</style>

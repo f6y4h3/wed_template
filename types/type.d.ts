@@ -7,7 +7,7 @@ declare global {
     component?: RouteComponent
     redirect?: string
     children?: Array<childrenTabel>
-    meta?: object
+    meta?: metaObj
     icon?: string
     hidden?: boolean
   }
@@ -15,9 +15,13 @@ declare global {
     path: string
     name: string
     component?: RouteComponent
-    meta?: object
+    meta?: metaObj
     icon?: string
     hidden?: boolean
+  }
+  interface metaObj {
+    name?: string
+    custom?: object
   }
 
   enum requestMethod {

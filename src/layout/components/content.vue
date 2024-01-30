@@ -1,12 +1,14 @@
 <template>
     <div class="container">
-        <router-view v-slot="{ Component, route }">
-            <transition name="_content" mode="out-in">
-                <KeepAlive :max="10">
-                    <component :is="Component" :key="route.path" />
-                </KeepAlive>
-            </transition>
-        </router-view>
+        <el-scrollbar>
+            <router-view v-slot="{ Component, route }">
+                <transition name="_content" mode="out-in">
+                    <KeepAlive :max="10">
+                        <component :is="Component" :key="route.path" />
+                    </KeepAlive>
+                </transition>
+            </router-view>
+        </el-scrollbar>
     </div>
 </template>
 <script lang="ts" setup>
@@ -16,7 +18,7 @@ import { RouterView } from 'vue-router'
 .container {
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     background-color: white;
 
     >.box-card {

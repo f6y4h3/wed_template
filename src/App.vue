@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import layout from './layout/layout.vue'
+// import layout from './layout/layout.vue'
 </script>
 
 <template>
   <div class="_body">
-    <layout />
+    <!-- <layout /> -->
+    <router-view />
   </div>
 </template>
 

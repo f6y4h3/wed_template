@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useRoutersStore } from '@/stores/router'
 import { nextTick } from 'vue'
-
+import layout from '@/layout/layout.vue'
 // const modules = import.meta.glob('../views/*/*.vue',{ eager: true })
 // console.log(modules,'路由地址');
 const routers: Record<string, any> = import.meta.glob('./module/*.ts', { eager: true })
@@ -13,7 +13,8 @@ for (const router in routers) {
     // routerList.push(routers[router]?.default)
     data = routers[router]?.default
     if (!data.icon) {
-      data.meta = data.name.slice(0, 2)
+      data.meta = data.meta || {}
+      data.meta.name = data.name.slice(0, 2)
     }
     routerList.push(data)
   }
@@ -25,10 +26,16 @@ nextTick(() => {
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    ...routerList,
     {
       path: '/',
-      redirect: '/index'
+      redirect: '/index',
+      component: layout,
+      children:[...routerList]
+    },
+    {
+      path:'/login',
+      name:'登录',
+      component: () => import('@/views/login/index.vue')
     }
   ]
 })

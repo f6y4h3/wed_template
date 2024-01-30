@@ -8,7 +8,7 @@
             <el-icon v-if="item.icon">
               <component :is="item.icon"></component>
             </el-icon>
-            <i v-if="!item.icon && global.shrinkVal" style="font-style: normal;">{{ item.meta }}</i>
+            <i v-if="!item.icon && global.shrinkVal" style="font-style: normal;">{{ item.meta?.name }}</i>
             <span>{{ item.name }}</span>
           </template>
           <el-menu-item-group v-for="(children, indexC) of item.children" :key="indexC">
@@ -19,7 +19,7 @@
           <el-icon v-if="item.icon">
             <component :is="item.icon"></component>
           </el-icon>
-          <i v-if="!item.icon && global.shrinkVal" style="font-style: normal;">{{ item.meta }}</i>
+          <i v-if="!item.icon && global.shrinkVal" style="font-style: normal;">{{ item.meta?.name }}</i>
           <template #title>
             <span>{{ item.name }}</span>
           </template>

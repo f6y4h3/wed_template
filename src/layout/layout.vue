@@ -10,7 +10,9 @@
         <NavBer />
       </div>
       <div class="_layout-right--bottom">
-        <Content />
+        <!-- <el-scrollbar> -->
+          <Content />
+        <!-- </el-scrollbar> -->
       </div>
     </div>
   </div>
@@ -31,30 +33,36 @@ console.log(routeList)
   width: 100vw;
   height: 100vh;
   display: flex;
-  &-left{
+
+  &-left {
     height: 100%;
     background-color: #545c64;
     color: white;
   }
-  &-right{
+
+  &-right {
     display: flex;
     flex-direction: column;
     background-color: #6b7075;
     height: 100vh;
     flex: 1;
-    &--bottom{
+
+    &--bottom {
       // height: ;
       flex: 1;
       overflow: hidden;
     }
   }
 }
-:deep(.el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-menu-item){
+
+:deep(.el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-menu-item) {
   padding-left: calc(var(--el-menu-base-level-padding) + var(--el-menu-level) * var(--el-menu-level-padding));
 }
-:deep(.el-menu-item-group){
+
+:deep(.el-menu-item-group) {
   background-color: #3e4144;
 }
+
 // :deep(.el-header){
 //   padding: 0px;
 // }
