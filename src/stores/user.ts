@@ -1,6 +1,14 @@
 import { reactive, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { getToken } from '@/utils/auth'
+import { getToken, setToken } from '@/utils/auth'
+import router from '@/router'
+import api from '@/api'
+interface registerQuery {
+  account: string
+  password: string
+  sex: number
+  name: string
+}
 export const useUserStore = defineStore('user', () => {
   const user = reactive<{ info: User }>({
     info: {
@@ -13,5 +21,16 @@ export const useUserStore = defineStore('user', () => {
   function setUser(users: User) {
     user.info = users
   }
-  return { user, userInfo, setUser }
+  function login(registerQuery: registerQuery) {
+    api.userLogin(registerQuery).then((res: any) => {
+      setToken(res.data.access_token)
+      setUser({
+        name: res.name ?? '',
+        avatar: res.avatar ?? '',
+        token: res.access_token ?? ''
+      })
+      router.replace({ path: '/' })
+    })
+  }
+  return { user, userInfo, setUser, login }
 })

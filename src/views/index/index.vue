@@ -10,6 +10,7 @@
         </template>
       </el-upload>
       <el-button @click="uploadImg">上传</el-button>
+      <el-button @click="getUser">User</el-button>
     </el-card>
   </div>
 </template>
@@ -45,6 +46,11 @@ const uploadImg = () => {
 
   api.uploadImg(formData).then((res: any) => {
     console.log(res);
+  })
+}
+const getUser = () => {
+  api.getUser().then((res: any) => {
+    console.log(res, '用户信息');
   })
 }
 </script>

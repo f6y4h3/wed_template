@@ -1,5 +1,6 @@
 import axios, { type AxiosInstance } from 'axios'
 import { ElMessage } from 'element-plus'
+import { getToken } from '@/utils/auth'
 const instance: AxiosInstance = axios.create({
   /**请求地址 */
   // baseURL: import.meta.env.VITE_BASE_URL,
@@ -10,8 +11,8 @@ const instance: AxiosInstance = axios.create({
 // 请求拦截器
 instance.interceptors.request.use((config) => {
   // console.log(config, 'config')
-  const token = localStorage.getItem('token')
-  if(token){
+  const token = getToken()
+  if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }
   return config
@@ -35,7 +36,7 @@ instance.interceptors.response.use((response) => {
         })
         return Promise.reject(data)
     }
-  }else{
+  } else {
     return Promise.reject(data)
   }
 })

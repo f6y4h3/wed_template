@@ -53,7 +53,7 @@ const list = computed(() => {
 })
 
 const handleCommand = (e: string | number | object) => {
-    console.log(e, 'e');
+    // console.log(e, 'e');
     switch ((e)) {
         case 2:
             cleraToken()

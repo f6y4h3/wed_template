@@ -28,14 +28,15 @@
 </template>
 <script lang="ts" setup>
 import { reactive } from "vue";
-import { setToken } from '@/utils/auth'
-import router from "@/router";
+// import { setToken } from '@/utils/auth'
+// import router from "@/router";
+import { useUserStore } from "@/stores/user"
 import api from '@/api';
 // const loginQuery = reactive({
 //   account:"",
 //   password:""
 // })
-
+const { login } = useUserStore()
 const registerQuery = reactive({
   account: 'xiaoluo',
   password: '123456',
@@ -44,10 +45,11 @@ const registerQuery = reactive({
 })
 
 const loginRequst = () => {
-  api.userLogin(registerQuery).then((res: any) => {
-    setToken(res.data.access_token)
-    router.replace({ path: '/' })
-  })
+  login(registerQuery)
+  // api.userLogin(registerQuery).then((res: any) => {
+  //   setToken(res.data.access_token)
+  //   router.replace({ path: '/' })
+  // })
 }
 
 const toRegister = () => {
