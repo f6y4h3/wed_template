@@ -1,6 +1,6 @@
 import { reactive, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { getToken, setToken } from '@/utils/auth'
+import { setToken } from '@/utils/auth'
 import router from '@/router'
 import api from '@/api'
 interface registerQuery {
@@ -14,23 +14,22 @@ export const useUserStore = defineStore('user', () => {
     info: {
       name: localStorage.getItem('name') || '',
       avatar: localStorage.getItem('avatar') || '',
-      token: getToken()
+      id: ''
     }
   })
   const userInfo = computed(() => user.info)
   function setUser(users: User) {
     user.info = users
   }
-  function login(registerQuery: registerQuery) {
-    api.userLogin(registerQuery).then((res: any) => {
-      setToken(res.data.access_token)
-      setUser({
-        name: res.name ?? '',
-        avatar: res.avatar ?? '',
-        token: res.access_token ?? ''
-      })
-      router.replace({ path: '/' })
+  async function login(registerQuery: registerQuery) {
+    const { data } = await api.userLogin(registerQuery)
+    setToken(data)
+    setUser({
+      name: data.userName ?? '',
+      avatar: data.avatar ?? '',
+      id: data.userId ?? ''
     })
+    router.replace({ path: '/' })
   }
   return { user, userInfo, setUser, login }
 })

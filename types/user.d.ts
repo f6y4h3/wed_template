@@ -1,5 +1,5 @@
-interface User{
-  name:string
-  avatar:string
-  token:string
+interface User {
+  name: string
+  avatar: string
+  id: string
 }

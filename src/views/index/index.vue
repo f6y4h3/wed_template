@@ -30,7 +30,7 @@ const toLogin = () => {
 const imgData = ref('')
 const getCats = () => {
   api.getCats({ msg: 'xiaomao' }).then((res: any) => {
-    console.log(res);
+    console.log(res,'getCats');
   })
 }
 const customUpload = (e: any) => {
