@@ -15,22 +15,25 @@
   </div>
 </template>
 <script lang="ts" setup>
+import myinput from '@/components/input.vue'
 // import urlImg from '../../assets/logo.png'
 defineOptions({
   name: 'index'
 })
+defineComponent({
+  myinput
+})
 import router from '@/router';
 import api from '@/api';
-import { ref } from 'vue';
+import { defineComponent, ref } from 'vue';
 // import { ajaxUpload } from 'element-plus/es/components/upload/src/ajax.mjs';
 const toLogin = () => {
   router.push({ path: 'login' })
 }
-// const imageUrl = ref('')
 const imgData = ref('')
 const getCats = () => {
   api.getCats({ msg: 'xiaomao' }).then((res: any) => {
-    console.log(res,'getCats');
+    console.log(res, 'getCats');
   })
 }
 const customUpload = (e: any) => {
