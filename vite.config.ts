@@ -35,12 +35,16 @@ export default defineConfig(({ mode }) => {
         '/api': {
           target: env.VITE_BASE_URL,
           changeOrigin: true,
-          rewrite(path){
+          rewrite(path) {
             return path.replace(/^\/api/, '')
           }
           // rewrite: (path) => path.replace(/^\/api/, '')
         }
-      }
+      },
+      Headers: {
+        'Access-Control-Allow-Origin': '*'
+      },
+      // hmr: false
       // cors:true
     }
   }

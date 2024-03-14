@@ -3,8 +3,6 @@ import { getToken } from '@/utils/auth'
 let _token = ''
 const whiteList = ['/login']
 router.beforeEach((to, form, next) => {
-  console.log(form)
-
   _token = getToken()
   if (whiteList.includes(to.path)) {
     if (!_token) {

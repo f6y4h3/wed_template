@@ -81,7 +81,8 @@ const getUser = () => {
     bottom: 0;
     top: 0;
     background-color: #fff;
-    background: url(../../assets/img/bg.jpg) no-repeat;
+    background: url(../../assets/img/bg3.jpg) no-repeat;
+    // transform: rotate(90deg);
     background-size: 100% 100%;
     filter: blur(5px);
     z-index: -1;

@@ -11,6 +11,18 @@
       </el-upload>
       <el-button @click="uploadImg">上传</el-button>
       <el-button @click="getUser">User</el-button>
+      <!-- <el-select v-model="value" multiple clearable collapse-tags placeholder="Select" popper-class="custom-header"
+        :max-collapse-tags="1" style="width: 240px">
+        <template v-slot:header>
+          <span>ALL</span>
+        </template>
+        <el-option v-for="item in cities" :key="item.value" :label="item.label" :value="item.value" />
+        <template v-slot:footer>
+          <div>
+            11111
+          </div>
+        </template>
+      </el-select> -->
     </el-card>
   </div>
 </template>
@@ -26,7 +38,7 @@ defineComponent({
 import router from '@/router';
 import api from '@/api';
 import { defineComponent, ref } from 'vue';
-// import { ajaxUpload } from 'element-plus/es/components/upload/src/ajax.mjs';
+
 const toLogin = () => {
   router.push({ path: 'login' })
 }
