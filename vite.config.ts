@@ -30,17 +30,17 @@ export default defineConfig(({ mode }) => {
     server: {
       open: true, //启动项目自动弹出浏览器
       port: Number(env.VITE_PORT), //启动端口
-      proxy: {
-        /** api 的请求接口代理 */
-        '/api': {
-          target: env.VITE_BASE_URL,
-          changeOrigin: true,
-          // rewrite(path) {
-          //   return path.replace(/^\/api/, '')
-          // }
-          // rewrite: (path) => path.replace(/^\/api/, '')
-        }
-      },
+      // proxy: {
+      //   /** api 的请求接口代理 */
+      //   '/api': {
+      //     target: env.VITE_BASE_URL,
+      //     changeOrigin: true,
+      //     // rewrite(path) {
+      //     //   return path.replace(/^\/api/, '')
+      //     // }
+      //     // rewrite: (path) => path.replace(/^\/api/, '')
+      //   }
+      // },
       Headers: {
         'Access-Control-Allow-Origin': '*'
       },
