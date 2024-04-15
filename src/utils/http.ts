@@ -16,6 +16,7 @@ instance.interceptors.request.use((config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }
+  config.headers['Access-Control-Allow-Origin'] = '*'
   return config
 })
 const responseMsg: { [key: string]: any } = {
