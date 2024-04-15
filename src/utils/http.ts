@@ -4,8 +4,8 @@ import { getToken, getRefreshToken, setToken } from '@/utils/auth'
 import api from '@/api'
 const instance: AxiosInstance = axios.create({
   /**请求地址 */
-  // baseURL: import.meta.env.VITE_BASE_URL,
-  baseURL: '',
+  baseURL: import.meta.env.VITE_BASE_URL,
+  // baseURL: '',
   /**超时时间 */
   timeout: 5000
 })
