@@ -45,7 +45,7 @@ export default defineConfig(({ mode }) => {
         'Access-Control-Allow-Origin': '*'
       },
       // hmr: false
-      // cors:true
+      cors:true
     }
   }
 })
