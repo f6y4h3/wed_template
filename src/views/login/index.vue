@@ -1,41 +1,49 @@
 <template>
   <div class="login_content">
-    <div class="login_content-content">
-      <div class="login_content-content--left">
-        <p>登录</p>
+    <el-card class="card_box">
+      <div class="box">
+        <div class="box_left"></div>
+        <div class="box_right" body-class="box_right">
+          <el-tabs v-model="activeName" class="demo-tabs" @tab-change="handleChange">
+            <el-tab-pane label="login" name="1">
+              <el-form label-suffix=":" label-width="80px">
+                <el-form-item label="账号">
+                  <el-input v-model.trim="registerQuery.account"></el-input>
+                </el-form-item>
+                <el-form-item label="密码">
+                  <el-input v-model.trim="registerQuery.password" type="password" show-password></el-input>
+                </el-form-item>
+                <el-form-item>
+                  <el-button @click="loginRequst" type="primary">登录</el-button>
+                </el-form-item>
+              </el-form>
+            </el-tab-pane>
+            <el-tab-pane label="register" name="2">
+              <el-form label-suffix=":" label-width="80px">
+                <el-form-item label="账号">
+                  <el-input v-model.trim="registerQuery.account"></el-input>
+                </el-form-item>
+                <el-form-item label="密码">
+                  <el-input v-model.trim="registerQuery.password" type="password" show-password></el-input>
+                </el-form-item>
+                <el-form-item label="确认密码">
+                  <el-input v-model.trim="registerQuery.password" type="password" show-password></el-input>
+                </el-form-item>
+                <el-form-item>
+                  <el-button @click="toRegister" type="primary">注册</el-button>
+                </el-form-item>
+              </el-form>
+            </el-tab-pane>
+          </el-tabs>
+        </div>
       </div>
-      <div class="login_content-content--right">
-        <el-form label-suffix=":">
-          <el-form-item label="账号">
-            <el-input v-model.trim="registerQuery.account"></el-input>
-          </el-form-item>
-          <el-form-item label="密码">
-            <el-input v-model.trim="registerQuery.password" type="password" show-password></el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-button @click="loginRequst">登录</el-button>
-          </el-form-item>
-          <el-form-item>
-            <el-button @click="toRegister">注册</el-button>
-          </el-form-item>
-          <el-form-item>
-            <el-button @click="getUser">User</el-button>
-          </el-form-item>
-        </el-form>
-      </div>
-    </div>
+    </el-card>
   </div>
 </template>
 <script lang="ts" setup>
-import { reactive } from "vue";
-// import { setToken } from '@/utils/auth'
-// import router from "@/router";
+import { reactive, ref } from "vue";
 import { useUserStore } from "@/stores/user"
 import api from '@/api';
-// const loginQuery = reactive({
-//   account:"",
-//   password:""
-// })
 const { login } = useUserStore()
 const registerQuery = reactive({
   account: 'xiaoluo',
@@ -43,74 +51,58 @@ const registerQuery = reactive({
   sex: 1,
   name: 'xiaoluo'
 })
+const activeName = ref('1')
 
 const loginRequst = () => {
   login(registerQuery)
-  // api.userLogin(registerQuery).then((res: any) => {
-  //   setToken(res.data.access_token)
-  //   router.replace({ path: '/' })
-  // })
 }
-
+const handleChange = () => {
+}
 const toRegister = () => {
   api.userRegister(registerQuery).then((res: any) => {
     console.log(res, '注册结果');
-  })
-
-}
-const getUser = () => {
-  api.getUser().then((res: any) => {
-    console.log(res, '用户信息');
   })
 }
 </script>
 <style lang="scss" scoped>
 .login_content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../../assets/img/login_left.png');
+  background-size: cover;
+}
 
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    background-color: #fff;
-    background: url(../../assets/img/bg3.jpg) no-repeat;
-    // transform: rotate(90deg);
-    background-size: 100% 100%;
-    filter: blur(5px);
-    z-index: -1;
+.card_box {
+  width: 50vw;
+  height: 50vh;
+  // border-radius: 50px 20px 50px 4px;
+}
+
+.box {
+  height: 100%;
+  display: flex;
+  background-image: url('../../assets/img/login_left.png');
+  background-size: cover;
+  // border-radius: 30px 20px 30px 4px;
+
+  &_left {
+    flex: 1;
   }
 
-  box-shadow:inset 0px 0px 5px 1px #000;
-  overflow: hidden;
-
-  &-content {
-    display: flex;
-    width: 100%;
-    height: 100%;
-
-    &--left {
-      flex: 2;
-      display: flex;
-      align-items: center;
-    }
-
-    &--right {
-      flex: 1;
-      display: flex;
-      align-items: center;
-    }
+  &_right {
+    flex: 1;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 50px 0px 0px 50px;
+    // box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, .2);
   }
 }
 
-:deep(.el-form-item__label) {
-  color: #e9e0e0;
+:deep(.el-card__body) {
+  width: 100%;
+  height: 100%;
 }
 </style>

@@ -11,7 +11,7 @@ const instance: AxiosInstance = axios.create({
 })
 // 请求拦截器
 instance.interceptors.request.use((config) => {
-  // console.log(config, 'config')
+  console.log(config, 'config')
   const token = getToken()
   if (token) {
     config.headers.Authorization = `Bearer ${token}`

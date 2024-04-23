@@ -26,7 +26,7 @@
                         <template #dropdown>
                             <el-dropdown-menu>
                                 <el-dropdown-item :command="1">我的信息</el-dropdown-item>
-                                <el-dropdown-item :command="2">退出</el-dropdown-item>
+                                <el-dropdown-item :command="2">退出登录</el-dropdown-item>
                             </el-dropdown-menu>
                         </template>
                     </el-dropdown>

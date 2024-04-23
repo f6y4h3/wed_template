@@ -18,6 +18,7 @@ export function getRefreshToken(): string {
   return window.localStorage.getItem('_refresh_token') || ''
 }
 export function cleraToken() {
-  window.localStorage.removeItem('_token')
+  window.localStorage.removeItem('_access_token')
+  window.localStorage.removeItem('_refresh_token')
   router.replace({ path: '/login' })
 }

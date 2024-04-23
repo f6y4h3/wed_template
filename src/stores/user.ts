@@ -28,7 +28,7 @@ export const useUserStore = defineStore('user', () => {
       name: data.userName ?? '',
       avatar: data.avatar ?? '',
       id: data.userId ?? ''
-    })
+    })    
     router.replace({ path: '/' })
   }
   return { user, userInfo, setUser, login }

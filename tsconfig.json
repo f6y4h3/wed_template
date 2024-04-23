@@ -1,5 +1,4 @@
 {
-  "files": [],
   "references": [
     {
       "path": "./tsconfig.node.json"
@@ -12,10 +11,17 @@
     }
   ],
   "include": [
-     "src/*/*/.vue",
+     "src/**/*/.vue",
+     "src/**/*.d.ts",
+     "src/**/*.ts"
   ],
+  "exclude": ["node_modules"],
   "compilerOptions": {
+    // "baseUrl":"./",
+    // "paths": {
+    //   "@/*":["./src/*"]
+    // },
     "types": ["element-plus/global","vite/client"],
-    
+    "moduleResolution": "Node"
   }
 }
