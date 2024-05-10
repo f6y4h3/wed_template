@@ -13,15 +13,17 @@
   "include": [
      "src/**/*/.vue",
      "src/**/*.d.ts",
-     "src/**/*.ts"
+     "src/**/*.ts",
+     "src/types/global.d.ts"
   ],
   "exclude": ["node_modules"],
   "compilerOptions": {
-    // "baseUrl":"./",
-    // "paths": {
-    //   "@/*":["./src/*"]
-    // },
+    "baseUrl":"src",
+    "paths": {
+      "@/*": ["./*"],
+      "@": ["./"]
+    },
     "types": ["element-plus/global","vite/client"],
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
   }
 }

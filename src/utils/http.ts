@@ -11,7 +11,6 @@ const instance: AxiosInstance = axios.create({
 })
 // 请求拦截器
 instance.interceptors.request.use((config) => {
-  console.log(config, 'config')
   const token = getToken()
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
@@ -31,11 +30,16 @@ const requestList: Array<any> = []
 // 响应拦截器
 instance.interceptors.response.use(
   (response) => {
-    const { status, data } = response
-    if (status == 200) {
-      return Promise.resolve(data)
+    console.log(response,'response');
+    
+    const { data } = response
+    if (data.code == 200) {
+      return Promise.resolve(data.data)
     } else {
-      // console.log(222);
+      ElMessage({
+        message: data.msg,
+        type: responseMsg[data.code]
+      })
       return Promise.reject(data)
     }
   },
@@ -49,7 +53,7 @@ instance.interceptors.response.use(
         }
         try {
           const refreshToken = await api.refreshToken({ refresh_token: getRefreshToken() })
-          setToken(refreshToken.data)
+          setToken(refreshToken)
           requestList.forEach((cb) => cb())
           return instance(config)
         } catch {
@@ -58,7 +62,7 @@ instance.interceptors.response.use(
           requestList.length = 0
           isRefreshToken = false
         }
-      } else {        
+      } else {
         return new Promise((resolve) => {
           requestList.push(() => {
             config.headers.Authorization = `Bearer ${getToken()}`
@@ -73,7 +77,6 @@ instance.interceptors.response.use(
       })
       return Promise.reject(data)
     }
-    // console.log(err, 'err')
   }
 )
 export default instance

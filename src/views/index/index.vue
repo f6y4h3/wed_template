@@ -28,7 +28,6 @@
 </template>
 <script lang="ts" setup>
 import myinput from '@/components/input.vue'
-// import urlImg from '../../assets/logo.png'
 defineOptions({
   name: 'index'
 })
@@ -46,6 +45,9 @@ const imgData = ref('')
 const getCats = () => {
   api.getCats({ msg: 'xiaomao' }).then((res: any) => {
     console.log(res, 'getCats');
+  })
+  api.getUser().then((res: any) => {
+    console.log(res, '用户信息');
   })
 }
 const customUpload = (e: any) => {

@@ -1,4 +1,4 @@
-interface User {
+type User = {
   name: string
   avatar: string
   id: string

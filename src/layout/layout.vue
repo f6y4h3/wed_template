@@ -62,11 +62,4 @@ console.log(routeList)
 :deep(.el-menu-item-group) {
   background-color: #3e4144;
 }
-
-// :deep(.el-header){
-//   padding: 0px;
-// }
-// :deep(.el-main){
-//   padding: 0px;
-// }
 </style>

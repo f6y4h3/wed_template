@@ -44,4 +44,7 @@ import { RouterView } from 'vue-router'
     }
 
 }
+:deep(.el-scrollbar__view){
+    height: 100%;
+}
 </style>
