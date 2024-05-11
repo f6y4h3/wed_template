@@ -46,6 +46,13 @@ export default defineConfig(({ mode }) => {
       },
       // hmr: false
       cors:true
+    },
+    terserOptions:{
+      compress: {
+        drop_console: true, // 生产环境自动删除console
+        drop_debugger: true,
+        // pure_funcs: ['console.log'] // 移除console
+      }
     }
   }
 })

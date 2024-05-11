@@ -19,11 +19,12 @@
                 <el-main>
                     <div class="msgcontent">
                         <div class="msgcontent-body" ref="scrollEl">
-                            <div class="msgcontent-body--item" v-for="item in 20" :key="item">
-                                <div class="avatar">{{ item }}</div>
+                            <div :class="['msgcontent-body--item', item.from ? '' : 'mini']"
+                                v-for="(item, index) in msgList" :key="index">
+                                <div class="avatar">{{ index }}</div>
                                 <div class="info">
                                     <div class="info-name">name</div>
-                                    <div class="info-msg">msg</div>
+                                    <div class="info-msg">{{ item.message }}</div>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +49,7 @@
 defineOptions({
     name: "user"
 })
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, nextTick } from 'vue';
 import { ElScrollbar } from 'element-plus'
 import getInstance from '@/utils/websocket';
 import ajax from '@/api'
@@ -70,14 +71,13 @@ onMounted(() => {
         friendList.value = res.list;
     })
     console.log(scrollEl.value.scrollHeight, 'scrollEl');
-
 })
 
 // socket.connect()
 console.log(socket, 'socket');
-socket.onMessage(({data})=>{
-    console.log(data.content);
-    
+socket.onMessage(({ data }) => {
+    // console.log(data.message);
+    msgList.value.push(data)
 })
 
 const submit = () => {
@@ -90,7 +90,14 @@ const submit = () => {
         })
         return
     }
-    scrollEl.value.scrollTop = scrollEl.value.scrollHeight + 100
+    msgList.value.push({
+        to: 5,
+        message: textarea.value,
+        messageType: 2,
+    })
+    nextTick(() => {
+        scrollEl.value.scrollTop = scrollEl.value.scrollHeight + 100
+    })
     socket.send(JSON.stringify({
         event: 'message',
         data: {
@@ -221,6 +228,10 @@ const handleAddFriend = () => {
                 }
             }
 
+        }
+
+        .mini {
+            flex-direction: row-reverse;
         }
 
         &--item:not(:nth-of-type(1)) {
