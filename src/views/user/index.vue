@@ -63,26 +63,25 @@ const msgList = ref([])
 const friendId = ref(0);
 const friendList = ref([]);
 // const socket = getInstance("ws://8.137.114.187:8080");
-const socket = getInstance("ws://localhost:8080");
+const socket = getInstance("ws://192.168.0.35:8080");
 
 onMounted(() => {
-    ajax.getFriends().then(res => {
-        console.log(res, 'getFriends');
-        friendList.value = res.list;
-    })
+    // ajax.getFriends().then(res => {
+    //     console.log(res, 'getFriends');
+    //     friendList.value = res.list;
+    // })
     console.log(scrollEl.value.scrollHeight, 'scrollEl');
 })
 
 // socket.connect()
 console.log(socket, 'socket');
-socket.onMessage(({ data }) => {
-    // console.log(data.message);
+socket.onMessage((data) => {
+    console.log(data, 'console.log(data);console.log(data);console.log(data);');
     msgList.value.push(data)
+    // console.log(data);
 })
 
 const submit = () => {
-    // if(socket.)
-    // console.log(socket.isConnect());
     if (!socket.isConnect()) {
         ElMessage({
             message: '连接超时，请重新连接',
@@ -98,18 +97,18 @@ const submit = () => {
     nextTick(() => {
         scrollEl.value.scrollTop = scrollEl.value.scrollHeight + 100
     })
-    socket.send(JSON.stringify({
+    socket.send({
         event: 'message',
         data: {
             to: 5,
             message: textarea.value,
             messageType: 2,
         }
-    }));
+    });
     textarea.value = ''
 }
 const lian = () => {
-    socket.connect()
+    socket.reconnect()
 }
 const duan = () => {
     socket.close()
@@ -126,8 +125,6 @@ const handleAddFriend = () => {
 }
 </script>
 <style lang="scss" scoped>
-// --el-main-padding: 0px;
-
 .card_box {
     height: 100%;
 }

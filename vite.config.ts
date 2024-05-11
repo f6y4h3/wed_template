@@ -48,20 +48,18 @@ export default defineConfig(({ mode }) => {
       cors: true
     },
     build: {
+      minify: 'terser',
       terserOptions: {
         compress: {
           drop_console: true, // 生产环境自动删除console
-          drop_debugger: true
-          // pure_funcs: ['console.log'] // 移除console
+          drop_debugger: true,
+          pure_funcs: ['console.log'] // 移除console
         }
       }
-    }
-    // terserOptions:{
-    //   compress: {
-    //     drop_console: true, // 生产环境自动删除console
-    //     drop_debugger: true,
-    //     // pure_funcs: ['console.log'] // 移除console
-    //   }
+    },
+    // esbuild方式打包  minify: 'esbuild',
+    // esbuild: {
+    //   drop: ['console', 'debugger']
     // }
   }
 })
