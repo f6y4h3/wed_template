@@ -45,14 +45,23 @@ export default defineConfig(({ mode }) => {
         'Access-Control-Allow-Origin': '*'
       },
       // hmr: false
-      cors:true
+      cors: true
     },
-    terserOptions:{
-      compress: {
-        drop_console: true, // 生产环境自动删除console
-        drop_debugger: true,
-        // pure_funcs: ['console.log'] // 移除console
+    build: {
+      terserOptions: {
+        compress: {
+          drop_console: true, // 生产环境自动删除console
+          drop_debugger: true
+          // pure_funcs: ['console.log'] // 移除console
+        }
       }
     }
+    // terserOptions:{
+    //   compress: {
+    //     drop_console: true, // 生产环境自动删除console
+    //     drop_debugger: true,
+    //     // pure_funcs: ['console.log'] // 移除console
+    //   }
+    // }
   }
 })
