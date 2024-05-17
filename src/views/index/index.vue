@@ -11,6 +11,10 @@
       </el-upload>
       <el-button @click="uploadImg">上传</el-button>
       <el-button @click="getUser">User</el-button>
+      <el-radio-group v-model="radio1" size="large" @change="handleInput">
+        <el-radio-button label="New York" value="1" />
+        <el-radio-button label="Washington" value="2" />
+      </el-radio-group>
       <!-- <el-select v-model="value" multiple clearable collapse-tags placeholder="Select" popper-class="custom-header"
         :max-collapse-tags="1" style="width: 240px">
         <template v-slot:header>
@@ -34,6 +38,7 @@ defineOptions({
 defineComponent({
   myinput
 })
+import { ElMessage, ElMessageBox } from 'element-plus'
 import router from '@/router';
 import api from '@/api';
 import { defineComponent, ref } from 'vue';
@@ -42,6 +47,7 @@ const toLogin = () => {
   router.push({ path: 'login' })
 }
 const imgData = ref('')
+const radio1 = ref('1')
 const getCats = () => {
   api.getCats({ msg: 'xiaomao' }).then((res: any) => {
     console.log(res, 'getCats');
@@ -69,6 +75,19 @@ const getUser = () => {
   api.getUser().then((res: any) => {
     console.log(res, '用户信息');
   })
+}
+
+const handleInput = (value) => {
+  // console.log(value);
+  ElMessageBox.alert('This is a message', 'Title', {
+    confirmButtonText: '确认',
+    cancelButtonText: 'Cancel',
+    callback: (action: Action) => {
+      console.log(action);
+      
+    },
+  })
+
 }
 </script>
 <style lang="scss" scoped></style>

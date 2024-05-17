@@ -62,8 +62,8 @@ const searchText = ref('');
 const msgList = ref([])
 const friendId = ref(0);
 const friendList = ref([]);
-// const socket = getInstance("ws://8.137.114.187:8080");
-const socket = getInstance("ws://192.168.0.35:8080");
+// const socket = getInstance("ws://8.137.114.187:14600");
+const socket = getInstance("ws://192.168.0.35:14600");
 
 onMounted(() => {
     // ajax.getFriends().then(res => {
@@ -133,7 +133,7 @@ const handleAddFriend = () => {
     border-radius: 10px;
     overflow: hidden;
     background-color: antiquewhite;
-}
+} 
 
 .msgItem {
     height: 70px;

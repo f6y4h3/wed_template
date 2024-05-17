@@ -55,7 +55,6 @@ class socket {
           this.reconnect()
           return
         } else {
-          console.log(resultData)
           callback(resultData.data)
         }
       }
